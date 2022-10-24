@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              小浪浪影视
 // @namespace         https://raw.githubusercontent.com/xiao-langlang/xiaolanglang_film/langlang/xiaolanglang.js
-// @version           1.1.6
+// @version           1.1.7
 // @description       腾讯视频、爱奇艺、优酷、芒果蓝光无广告在线观看；含搜索功能，可搜索观看美剧、日韩剧、禁片、付费剧等
 // @author            小浪浪
 // @icon              https://greasyfork.s3.us-east-2.amazonaws.com/q71ldqvvd37exhd30wfopzjlalwc
