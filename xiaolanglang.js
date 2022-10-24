@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              小浪浪影视
 // @namespace         https://raw.githubusercontent.com/xiao-langlang/xiaolanglang_film/langlang/xiaolanglang.js
-// @version           1.1.5
+// @version           1.1.6
 // @description       腾讯视频、爱奇艺、优酷、芒果蓝光无广告在线观看；含搜索功能，可搜索观看美剧、日韩剧、禁片、付费剧等
 // @author            小浪浪
 // @icon              https://greasyfork.s3.us-east-2.amazonaws.com/q71ldqvvd37exhd30wfopzjlalwc
@@ -61,18 +61,18 @@
 
 	//解析接口配置
 	const originalInterfaceList = [
-        {"name":"小浪浪视频1","url":"https://jx.7kjx.com/?url="},
+        {"name":"小浪浪视频1","url":"https://jx.xmflv.com/?url="},
         {"name":"小浪浪视频2","url":"https://www.ckmov.vip/api.php?url="},
 		{"name":"小浪浪视频3","url":"http://www.ikukk.com/?ac=1&url="},
 		{"name":"小浪浪视频4","url":"http://ccav5.ml/v.html?url="},
 		{"name":"小浪浪视频5","url":"https://www.nxflv.com/?url="},
-		{"name":"小浪浪视频6","url":"https://www.ckmov.com/?url="},
+		{"name":"小浪浪视频6","url":"http://jsap.attakids.com/?url="},
         {"name":"小浪浪视频7","url":"https://jx.m3u8.tv/jiexi/?url="},
         {"name":"小浪浪视频8","url":"https://player.maqq.cn/?url="},
 	];
     const searchList = [
         {"name":"思古(推荐)","url":"https://www.siguyy.com/search/-------------.html?wd=search_flag&submit="},
-        {"name":"M影院(推荐)","url":"https://www.umkan.com/index.php/vod/search/wd/search_flag.html"},
+        {"name":"爱看(推荐)","url":"https://ikan6.vip/vodsearch/search_flag-------------/"},
         {"name":"艾菲影视(推荐)","url":"https://www.ifimv.com/vsearch/search_flag--.html"},
         {"name":"RENPE(推荐)","url":"https://rpzhuiju.cn/vodsearch/-------------/?wd=search_flag"},
         {"name":"月亮影视","url":"https://www.aimoon.me/search.html?wd=search_flag"},
@@ -98,6 +98,7 @@
         {"name":"极品影视","url":"https://www.jpys.me/vodsearch/search_flag-------------.html"},
         {"name":"百度云","url":"http://www.bdzy.com/index.php/vod/search.html?wd=search_flag&submit="},
         {"name":"迅雷","url":"http://www.lntzy.com/vodsearch/-------------.html?wd=search_flag"},
+        {"name":"M影院","url":"https://www.umkan.com/index.php/vod/search/wd/search_flag.html"},
 	];
 
 	const commonFunctionObject = new commonFunction();
@@ -111,7 +112,7 @@
                           "mgtv.com/b/",
                           "sohu.com/album/","sohu.com/v/",
                           "acfun.cn/v/",
-                          "bilibili.com/bangumi/play/","bilibili.com/video/",
+                          "bilibili.com/bangumi/play/",
                           "baofeng.com/play/",
                           "pptv.com/show/",
                           "1905.com/video/","1905.com/play/",
@@ -130,6 +131,13 @@
 						}
 				}
 			}
+            for(var j=0; j<originalInterfaceList.length; j++){
+                if(window.location.href.indexOf(originalInterfaceList[j].url)!=-1||window.location.href.indexOf("http://www.feiyyd.com/?url=")!=-1){
+                result=false;
+                break;
+                }
+            }
+            if(top.location.href!=self.location.href)result=false;
 			return result;
 		};
 		this.showPlayerWindow = function(playObject){
@@ -179,6 +187,7 @@
                             #vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .p_line`+this.elementId+` >.input_line`+this.elementId+`{border:1px solid red;border-radius:8px;}
                             #vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .p_line`+this.elementId+` >.btn_submit`+this.elementId+`{border:1px solid red;border-radius:8px;}
                             #vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .p_line1`+this.elementId+` >.btn_submit1`+this.elementId+`{border:1px solid #FFCBA4;border-radius:8px;}
+                            #vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .explain_box`+this.elementId+` >.content`+this.elementId+` >.real_url`+this.elementId+`{border:1px solid #191970;border-radius:4px;}
                             #vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .explain_box`+this.elementId+` >.content`+this.elementId+` >.show_web`+this.elementId+`{border:1px solid #191970;border-radius:4px;}
 							#vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .item_box`+this.elementId+`{margin-bottom:10px;}
 							#vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii> .item_box`+this.elementId+`:last-child{margin-bottom:0px;}
@@ -222,7 +231,8 @@
 												<div class='content`+this.elementId+`'>
 													1.解析功能：在腾讯、爱奇艺、优酷等平台打开相应的影视，点击最上方的小浪浪影视即可，解析不出切换下一个接口<br>
                                                     2.搜索功能：在输入框输入内容，展开点击相应影视源（此功能可以观看美剧、日韩剧、禁片等）<br>
-                                                    3.其他功能：(1)右击拖动哆啦A梦可移动位置<br>
+                                                    3.获取视频真实链接：<button type="submit" class="real_url`+this.elementId+`" style="color:#191970;">点击获取</button><br>
+                                                    4.其他功能：(1)右击拖动哆啦A梦可移动位置<br>
                                                     （2）图标显示页面：<button type="submit" class="show_web`+this.elementId+`" style="color:#191970;">影视网页显示</button><br><br>
                                                     有问题请在此脚本页面进行反馈
                                                     https://greasyfork.org/zh-CN/scripts/450411
@@ -243,14 +253,17 @@
             if(commonFunctionObject.GMgetValue("show_webpage",null)==="true"){
                 $(".show_web"+this.elementId).text("全局网页显示");
                 $(".interface_box"+this.elementId).hide();
+                $(".real_url"+this.elementId).hide();
                 for(var i=0; i<urls.length;i++){
 					if(window.location.href.indexOf(urls[i])!=-1){
 						$(".interface_box"+this.elementId).show();
+                        $(".real_url"+this.elementId).show();
                         break;
 					}
 				}
             }
             else {$(".show_web"+this.elementId).text("影视网页显示");}
+
 			$("#vip_movie_box"+this.elementId+" >.plugin_inner_"+this.elementId).on("mouseover", () => {
 				$(".showhide_box"+this.elementId).show();
 			});
@@ -268,9 +281,12 @@
 				if(box_switch1==1){$(".explain_box"+this.elementId).show();$(".btn_submit1"+this.elementId).text("收起");box_switch1=2;}
                 else if(box_switch1==2){$(".explain_box"+this.elementId).hide();$(".btn_submit1"+this.elementId).text("展开");box_switch1=1;}
 			});
+            $("#vip_movie_box"+this.elementId+" >.plugin_inner_"+this.elementId+" >.showhide_box"+this.elementId+" >.vip_mod_box_action_687ii"+" >.explain_box"+this.elementId+"  >.content"+this.elementId+" >.real_url"+this.elementId).on("click", () => {
+                commonFunctionObject.GMopenInTab("http://www.feiyyd.com/?url="+window.location.href, false);
+			});
             $("#vip_movie_box"+this.elementId+" >.plugin_inner_"+this.elementId+" >.showhide_box"+this.elementId+" >.vip_mod_box_action_687ii"+" >.explain_box"+this.elementId+"  >.content"+this.elementId+" >.show_web"+this.elementId).on("click", () => {
-				if(commonFunctionObject.GMgetValue("show_webpage",null)==="null"){$(".show_web"+this.elementId).text("全局网页显示");commonFunctionObject.GMsetValue("show_webpage","true");}
-                else if(commonFunctionObject.GMgetValue("show_webpage",null)==="true"){$(".show_web"+this.elementId).text("影视网页显示");commonFunctionObject.GMsetValue("show_webpage","null");}
+                if(commonFunctionObject.GMgetValue("show_webpage",null)==="true"){$(".show_web"+this.elementId).text("影视网页显示");commonFunctionObject.GMsetValue("show_webpage","null");}
+                else {$(".show_web"+this.elementId).text("全局网页显示");commonFunctionObject.GMsetValue("show_webpage","true");}
 			});
 			$("body").on("click","#vip_movie_box"+this.elementId+" .vip_mod_box_action_687ii>.item_box"+this.elementId+">.interface_box"+this.elementId+">span",function(){
 				var index = parseInt($(this).attr("data-index"));
