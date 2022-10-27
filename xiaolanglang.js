@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              小浪浪影视
 // @namespace         https://raw.githubusercontent.com/xiao-langlang/xiaolanglang_film/langlang/xiaolanglang.js
-// @version           1.1.7
+// @version           1.1.8
 // @description       腾讯视频、爱奇艺、优酷、芒果蓝光无广告在线观看；含搜索功能，可搜索观看美剧、日韩剧、禁片、付费剧等
 // @author            小浪浪
 // @icon              https://greasyfork.s3.us-east-2.amazonaws.com/q71ldqvvd37exhd30wfopzjlalwc
@@ -78,7 +78,7 @@
         {"name":"月亮影视","url":"https://www.aimoon.me/search.html?wd=search_flag"},
         {"name":"Auete","url":"https://auete.com/search.php?searchword={search_flag}"},
         {"name":"达人","url":"https://vipmv.tv/vod/search.html?wd=search_flag"},
-        {"name":"瓜皮","url":"https://guapitv.xyz/vodsearch/search_flag-------------.html"},
+        {"name":"皮皮","url":"https://pipipao.com/vodsearch.html?wd=search_flag"},
         {"name":"牛马TV","url":"https://www.niumatv.cc/vodsearch.html?wd=search_flag&submit="},
         {"name":"555电影","url":"https://www.o8tv.com/vodsearch/search_flag-------------.html"},
         {"name":"1080P","url":"https://1080p.tv/vodsearch/-------------/?wd=search_flag"},
@@ -99,6 +99,9 @@
         {"name":"百度云","url":"http://www.bdzy.com/index.php/vod/search.html?wd=search_flag&submit="},
         {"name":"迅雷","url":"http://www.lntzy.com/vodsearch/-------------.html?wd=search_flag"},
         {"name":"M影院","url":"https://www.umkan.com/index.php/vod/search/wd/search_flag.html"},
+        {"name":"真实链接1","url":"http://yundun-ky.kyky.vip/api.php/provide/vod/?ac=videolist&wd=search_flag"},
+        {"name":"真实链接2","url":"http://124.248.66.168:1212/xgapp.php/v2/search?pg=1&text=search_flag"},
+        {"name":"配合2使用","url":"http://124.248.66.168:1212/xgapp.php/v2/video_detail?id=vod_id"},
 	];
 
 	const commonFunctionObject = new commonFunction();
@@ -232,6 +235,7 @@
 													1.解析功能：在腾讯、爱奇艺、优酷等平台打开相应的影视，点击最上方的小浪浪影视即可，解析不出切换下一个接口<br>
                                                     2.搜索功能：在输入框输入内容，展开点击相应影视源（此功能可以观看美剧、日韩剧、禁片等）<br>
                                                     3.获取视频真实链接：<button type="submit" class="real_url`+this.elementId+`" style="color:#191970;">点击获取</button><br>
+                                                    (!!!)在线播放真实链接视频，需在浏览器的附加组件上安装：Native HLS<br>
                                                     4.其他功能：(1)右击拖动哆啦A梦可移动位置<br>
                                                     （2）图标显示页面：<button type="submit" class="show_web`+this.elementId+`" style="color:#191970;">影视网页显示</button><br><br>
                                                     有问题请在此脚本页面进行反馈
@@ -362,6 +366,7 @@
 
 	try{
 			const superVideoHelperObject = new superVideoHelper();
+            if(window.location.href.indexOf("http://www.feiyyd.com/?url=")!=-1)document.body.innerHTML=document.body.innerHTML.match("\"url\":\\s?\"(.*?)\"")[1];
 			if(superVideoHelperObject.isRun()){
 				if(commonFunctionObject.GMgetValue("copyright_video_remind",null)==="true"){
 					superVideoHelperObject.start();
