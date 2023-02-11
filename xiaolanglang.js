@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              小浪浪影视
 // @namespace         https://raw.githubusercontent.com/xiao-langlang/xiaolanglang_film/langlang/xiaolanglang.js
-// @version           1.2.0
+// @version           1.2.1
 // @description       腾讯视频、爱奇艺、优酷、芒果蓝光无广告在线观看；含搜索功能，可搜索观看美剧、日韩剧、下架、付费剧等
 // @author            小浪浪
 // @icon              https://greasyfork.s3.us-east-2.amazonaws.com/q71ldqvvd37exhd30wfopzjlalwc
@@ -64,18 +64,16 @@
         {"name":"小浪浪视频1","url":"https://jx.xmflv.com/?url="},
         {"name":"小浪浪视频2","url":"https://www.ckmov.vip/api.php?url="},
         {"name":"小浪浪视频3","url":"http://www.ikukk.com/?ac=1&url="},
-        {"name":"小浪浪视频4","url":"https://okjx.cc/?url="},
-        {"name":"小浪浪视频5","url":"https://www.nxflv.com/?url="},
+        {"name":"小浪浪视频4","url":"https://ml0513.com/player/analysis.php?v="},
+        {"name":"小浪浪视频5","url":"https://jx.777jiexi.com/player/?url="},
         {"name":"小浪浪视频6","url":"https://jx.iztyy.com/svip/?url="},
         {"name":"小浪浪视频7","url":"https://jx.m3u8.tv/jiexi/?url="},
-        {"name":"小浪浪视频8","url":"https://json.legendwhb.cn/llq/?url="},
-        //{"name":"小浪浪视频9","url":"https://ccav5.ml/v.html?url="},
-        //{"name":"小浪浪视频10","url":"https://www.playm3u8.cn/jiexi.php/?url="},
+        {"name":"小浪浪视频8","url":"https://www.playm3u8.cn/jiexi.php/?url="},
 	];
     const searchList = [
         {"name":"思古(推荐)","url":"https://www.siguyy.com/search/-------------.html?wd=search_flag&submit="},
         {"name":"爱看(推荐)","url":"https://ikan6.vip/vodsearch/search_flag-------------/"},
-        {"name":"影视之家(推荐)","url":"http://yszjvip.com/index.php/vod/search.html?wd=search_flag"},
+        {"name":"影视之家(推荐)","url":"http://yszj.cm/vodsearch/search_flag-------------.html"},
         {"name":"万能影院(推荐)","url":"https://wnvod.net/vodsearch/-------------.html?wd=search_flag&submit="},
         {"name":"艾菲影视","url":"https://www.ifimv.com/vsearch/search_flag--.html"},
         {"name":"月亮影视","url":"https://www.aimoon.me/search.html?wd=search_flag"},
@@ -85,7 +83,6 @@
         {"name":"电影牛","url":"https://www.dianyingn.com/vodsearch/search_flag-------------.html"},
         {"name":"变形金刚","url":"https://www.kuaiyunyy.com/index.php/vod/search/wd/search_flag.html"},
         {"name":"厂长","url":"https://czspp.com/xssearch?q=search_flag"},
-        {"name":"爱酷","url":"https://www.zhanlangbu.com/index.php/vod/search/wd/search_flag.html"},
         {"name":"大米星球","url":"https://www.dmxq.cc/vodsearch/search_flag-------------.html"},
         {"name":"多多","url":"https://www.ddzyz2.com/vodsearch/-------------.html?wd=search_flag&submit=search"},
         {"name":"神马","url":"https://www.smdyy.cc/search.html?wd=search_flag&submit="},
@@ -94,13 +91,14 @@
         {"name":"city影院","url":"https://www.citydy.com/search.html?wd=search_flag"},
         {"name":"追剧喵","url":"https://zjmiao.com/index.php/vod/search/wd/search_flag/"},
         {"name":"稀饭","url":"https://www.xifanys.com/yingpiansearch/-------------.html?wd=search_flag"},
-        {"name":"大鱼","url":"https://www.187687.com/index.php/vod/search.html?wd=search_flag&submit="},
         {"name":"极品影视","url":"https://www.jpys.me/vodsearch/search_flag-------------.html"},
         {"name":"百度云","url":"http://www.bdzy.com/index.php/vod/search.html?wd=search_flag&submit="},
         {"name":"迅雷","url":"http://www.lntzy.com/vodsearch/-------------.html?wd=search_flag"},
         {"name":"M影院","url":"https://www.umkan.com/index.php/vod/search/wd/search_flag.html"},
         {"name":"天空影视","url":"http://tkys.vip/vodsearch/wd/search_flag.html"},
-        {"name":"爱酷影视","url":"https://www.zhanlangbu.com/index.php/vod/search.html?wd=search_flag"},
+        {"name":"诺讯","url":"https://www.nunxun.com/index.php/vod/search.html?wd=search_flag"},
+        {"name":"徕米","url":"https://lmtv.cc/vodsearch/search_flag-------------.html"},
+        {"name":"豆豆","url":"https://app.hengj.cn/index.php/vod/search.html?wd=search_flag"},
 	];
 
 	const commonFunctionObject = new commonFunction();
