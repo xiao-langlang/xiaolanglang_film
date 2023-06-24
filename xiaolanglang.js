@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              小浪浪影视
 // @namespace         https://raw.githubusercontent.com/xiao-langlang/xiaolanglang_film/langlang/xiaolanglang.js
-// @version           1.2.1
+// @version           1.2.2
 // @description       腾讯视频、爱奇艺、优酷、芒果蓝光无广告在线观看；含搜索功能，可搜索观看美剧、日韩剧、下架、付费剧等
 // @author            小浪浪
 // @icon              https://greasyfork.s3.us-east-2.amazonaws.com/q71ldqvvd37exhd30wfopzjlalwc
@@ -61,44 +61,45 @@
 
 	//解析接口配置
 	const originalInterfaceList = [
-        {"name":"小浪浪视频1","url":"https://jx.xmflv.com/?url="},
-        {"name":"小浪浪视频2","url":"https://www.ckmov.vip/api.php?url="},
-        {"name":"小浪浪视频3","url":"http://www.ikukk.com/?ac=1&url="},
-        {"name":"小浪浪视频4","url":"https://ml0513.com/player/analysis.php?v="},
-        {"name":"小浪浪视频5","url":"https://jx.777jiexi.com/player/?url="},
-        {"name":"小浪浪视频6","url":"https://jx.iztyy.com/svip/?url="},
-        {"name":"小浪浪视频7","url":"https://jx.m3u8.tv/jiexi/?url="},
-        {"name":"小浪浪视频8","url":"https://www.playm3u8.cn/jiexi.php/?url="},
+        {"name":"虾米解析","url":"https://jx.xmflv.com/?url="},
+        {"name":"(支持弹幕)","url":"https://jx.777jiexi.com/player/?url="},
+        {"name":"CKMOV","url":"https://www.ckmov.vip/api.php?url="},
+        {"name":"云解析","url":"https://jx.iztyy.com/svip/?url="},
+        {"name":"M3U8","url":"https://jx.m3u8.tv/jiexi/?url="},
+        {"name":"黁讯解析","url":"https://www.nunxun.com/?url="},
+        {"name":"咸鱼云","url":"https://jx.aidouer.net/?url="},
+        {"name":"茶讯","url":"https://chaxun.truechat365.com/?url="},
+        {"name":"M1907","url":"https://im1907.top/?jx="},
+        {"name":"yparse","url":"https://jx.yparse.com/index.php?url="},
+        {"name":"h8jx","url":"https://www.h8jx.com/jiexi.php?url="},
+        {"name":"Playm3u8","url":"https://www.playm3u8.cn/jiexi.php/?url="},
+        //{"name":"综合线路","url":"https://video.isyour.love/player/getplayer?url="},
 	];
     const searchList = [
-        {"name":"思古(推荐)","url":"https://www.siguyy.com/search/-------------.html?wd=search_flag&submit="},
+        {"name":"八仟影视(推荐)","url":"http://www.8kvod.com/vsesearch_flag/"},
+        {"name":"天空影视(推荐)","url":"https://tkznp.com/vodsearch/wd/search_flag.html"},
         {"name":"爱看(推荐)","url":"https://ikan6.vip/vodsearch/search_flag-------------/"},
-        {"name":"影视之家(推荐)","url":"http://yszj.cm/vodsearch/search_flag-------------.html"},
-        {"name":"万能影院(推荐)","url":"https://wnvod.net/vodsearch/-------------.html?wd=search_flag&submit="},
-        {"name":"艾菲影视","url":"https://www.ifimv.com/vsearch/search_flag--.html"},
-        {"name":"月亮影视","url":"https://www.aimoon.me/search.html?wd=search_flag"},
-        {"name":"Auete","url":"https://auete.com/search.php?searchword={search_flag}"},
-        {"name":"达人","url":"https://vipmv.tv/vod/search.html?wd=search_flag"},
-        {"name":"555电影","url":"https://www.o8tv.com/vodsearch/search_flag-------------.html"},
-        {"name":"电影牛","url":"https://www.dianyingn.com/vodsearch/search_flag-------------.html"},
-        {"name":"变形金刚","url":"https://www.kuaiyunyy.com/index.php/vod/search/wd/search_flag.html"},
-        {"name":"厂长","url":"https://czspp.com/xssearch?q=search_flag"},
+        {"name":"灰太狼(推荐)","url":"https://www.huitailang.tv/index.php/vod/search.html?wd=search_flag"},
+        {"name":"girigiri(动漫)","url":"https://anime.girigirilove.com/vodsearch/-------------/?wd=search_flag"},
+        {"name":"heitai(动漫)","url":"https://www.heitaifun.com/vodsearch/search_flag-------------.html"},
+        {"name":"动漫狐(动漫)","url":"http://acfox.moe/index.php/vod/search/wd/search_flag.html"},
+        {"name":"AnFuns(动漫)","url":"https://www.anfuns.cc/search.html?wd=search_flag%AB&submit="},
+        {"name":"WRNM","url":"https://www.wrnm.cc/index.php/vod/search/wd/search_flag.html"},
+        {"name":"FREEOK","url":"https://www.freeok.vip/vod-search/search_flag-------------.html"},
+        {"name":"gaze","url":"https://gaze.run/filter?search=search_flag"},
+        {"name":"拖布影视","url":"https://www.rainvi.com/index.php/vod/search.html?wd=search_flag"},
+        {"name":"电影蜜蜂网","url":"https://www.sysyjc.com/index.php/vod/search/wd/search_flag.html"},
         {"name":"大米星球","url":"https://www.dmxq.cc/vodsearch/search_flag-------------.html"},
-        {"name":"多多","url":"https://www.ddzyz2.com/vodsearch/-------------.html?wd=search_flag&submit=search"},
-        {"name":"神马","url":"https://www.smdyy.cc/search.html?wd=search_flag&submit="},
         {"name":"voflix","url":"https://www.voflix.com/search/-------------.html?wd=search_flag"},
-        {"name":"LIBVIO","url":"https://www.libvio.me"},
+        {"name":"LIBVIO","url":"https://www.libvio.me/search/-------------.html?wd=search_flag&submit="},
         {"name":"city影院","url":"https://www.citydy.com/search.html?wd=search_flag"},
-        {"name":"追剧喵","url":"https://zjmiao.com/index.php/vod/search/wd/search_flag/"},
         {"name":"稀饭","url":"https://www.xifanys.com/yingpiansearch/-------------.html?wd=search_flag"},
-        {"name":"极品影视","url":"https://www.jpys.me/vodsearch/search_flag-------------.html"},
-        {"name":"百度云","url":"http://www.bdzy.com/index.php/vod/search.html?wd=search_flag&submit="},
-        {"name":"迅雷","url":"http://www.lntzy.com/vodsearch/-------------.html?wd=search_flag"},
-        {"name":"M影院","url":"https://www.umkan.com/index.php/vod/search/wd/search_flag.html"},
-        {"name":"天空影视","url":"http://tkys.vip/vodsearch/wd/search_flag.html"},
-        {"name":"诺讯","url":"https://www.nunxun.com/index.php/vod/search.html?wd=search_flag"},
-        {"name":"徕米","url":"https://lmtv.cc/vodsearch/search_flag-------------.html"},
-        {"name":"豆豆","url":"https://app.hengj.cn/index.php/vod/search.html?wd=search_flag"},
+        {"name":"百度云","url":"https://www.bdzy.com/index.php/vod/search.html?wd=search_flag&submit="},
+        {"name":"北极狐","url":"https://kuin.one/sou/search_flag-------------.html"},
+        {"name":"COKEMV","url":"https://cokemv.co/vodsearch/search_flag-------------.html"},
+        {"name":"爱看影院","url":"https://www.3wyy.com/vodsearch/search_flag-------------.html"},
+        {"name":"一龙高清","url":"https://www.yilonghd.com/search.html?wd=search_flag"},
+        {"name":"茶杯狐","url":"https://www.cupfox.app/s/search_flag"},
 	];
 
 	const commonFunctionObject = new commonFunction();
@@ -178,7 +179,6 @@
 								background: linear-gradient(30deg, #2a66ff 40%);
 							}
 							#vip_movie_box`+this.elementId+` .img_box`+this.elementId+`>img {width:50px; display:inline-block; vertical-align:middle;}
-
 							#vip_movie_box`+this.elementId+` .showhide_box`+this.elementId+`{display:none;padding-left:5px;position: absolute;left: 45px;top: 0;}
 							#vip_movie_box`+this.elementId+` .vip_mod_box_action_687ii{width:380px; max-height:400px; overflow-y:auto;background-color:rgba(241,241,241);}
 							#vip_movie_box`+this.elementId+` .default-scrollbar-55678::-webkit-scrollbar{width:5px; height:1px;}
@@ -247,6 +247,65 @@
 			$("body").append(htmlMould);
 		}
 
+        function DisplayPosition(playObject){
+            var domHead = document.getElementsByTagName('head')[0];
+            var domStyle = document.createElement('style');
+            domStyle.type = 'text/css';
+            domStyle.rel = 'stylesheet';
+            let playVideoStyle = `
+               .zhm_play_vidoe_icon{padding-top:2px;cursor:pointer;z-index:9999999;text-align:center;overflow:visible;display:flex;width:auto;}
+               .zhm_play_video_wrap{z-index:9999999;overflow: hidden;width:300px;}
+               .zhm_play_video_line{width:320px;height:316px;overflow-y:scroll;overflow-x:hidden;}
+               .zhm_play_vide_line_ul{width:300px;display: flex;justify-content: flex-start;flex-flow: row wrap;list-style: none;padding:0px;margin:0px;}
+               .zhm_play_video_line_ul_li{padding:4px 0px;margin:2px;width:30%;color:#FFF;text-align:center;background-color:#f24443;box-shadow:0px 0px 10px #fff;font-size:14px;}
+               .zhm_play_video_line_ul_li:hover{color:#260033;background-color:#fcc0c0}
+               .zhm_line_selected{color:#260033;background-color:#fcc0c0}
+               .zhm_play_video_jx{ width:100%;height:100%;z-index:999999;position: absolute;top:0px;padding:0px;}
+               `;
+                domStyle .appendChild(document.createTextNode(playVideoStyle));
+                domHead.appendChild(domStyle);
+            let playJxHtml = "<div class='zhm_play_video_jx'>";
+            playJxHtml += "<iframe allowtransparency=true frameborder='0' scrolling='no' allowfullscreen=true allowtransparency=true name='jx_play' style='height:100%;width:100%' id='playIframe'></iframe></div>";
+            let jxVideoData = [
+                {funcName:"playVideo", node:".player__container" ,match:/https:\/\/v.qq.com\/x\/cover\/[a-zA-Z0-9]+.html/,areaClassName:'mod_episode',name:'qqPC'},
+                {funcName:"playVideo", node:"#player-container" ,match:/https:\/\/v.qq.com\/x\/cover\/[a-zA-Z0-9]+\/[a-zA-Z0-9]+.html/,areaClassName:'mod_episode',name:'qqPC'},
+                {funcName:"playVideo", node:".container-player" ,match:/v\.qq\.com\/x\/page/,areaClassName:'mod_episode'},
+                {funcName:"playVideo", node:"#player",match:/m\.v\.qq\.com\/x\/m\/play\?cid/},
+                {funcName:"playVideo", node:"#player",match:/m\.v\.qq\.com\/x\/play\.html\?cid=/},
+                {funcName:"playVideo", node:"#player",match:/m\.v\.qq\.com\/play\.html\?cid\=/},
+                {funcName:"playVideo", node:"#player",match:/m\.v\.qq\.com\/cover\/.*html/},
+                {funcName:"playVideo", node:"#flashbox",match:/^https:\/\/www\.iqiyi\.com\/[vwa]\_/,areaClassName:'qy-episode-num',name:'iqiyiPc'},
+                {funcName:"playVideo", node:".m-video-player-wrap",match:/^https:\/\/m.iqiyi\.com\/[vwa]\_/,areaClassName:'m-sliding-list'},
+                {funcName:"playVideo", node:".intl-video-wrap",match:/^https:\/\/www\.iq\.com\/play\//,areaClassName:'m-sliding-list'},
+                {funcName:"playVideo", node:"#player",match:/m\.youku\.com\/alipay_video\/id_/},
+                {funcName:"playVideo", node:"#player",match:/m\.youku\.com\/video\/id_/},
+                {funcName:"playVideo", node:"#player",match:/v\.youku\.com\/v_show\/id_/},
+                {funcName:"playVideo", node:"#player",match:/v\.youku\.com\/v_play\/id_/},
+                {funcName:"playVideo", node:"#bilibili-player",nodeType:'id',match:/www\.bilibili\.com\/video/,name:'biliPc',areaClassName:'video-episode-card'},
+                {funcName:"playVideo", node:"#player_module",nodeType:'id',match:/www\.bilibili\.com\/bangumi/,areaClassName:'ep-list-wrapper report-wrap-module'},
+                {funcName:"playVideo", node:".player-container",nodeType:'class',match:/m\.bilibili\.com\/bangumi/,areaClassName:'ep-list-pre-container no-wrap'},
+                {funcName:"playVideo", node:".mplayer",nodeType:'class',match:/m\.bilibili\.com\/video\//},
+                {funcName:"playVideo", node:".video-area",nodeType:'class',match:/m\.mgtv\.com\/b/},
+                {funcName:"playVideo", node:"#mgtv-player-wrap",nodeType:'id',match:/mgtv\.com\/b|l/,areaClassName:'episode-items clearfix'},
+                {funcName:"playVideo", node:".x-player",nodeType:'class',match:/tv\.sohu\.com\/v/},
+                {funcName:"playVideo", node:".x-cover-playbtn-wrap",nodeType:'class',match:/m\.tv\.sohu\.com/},
+                {funcName:"playVideo", node:"#playerWrap",nodeType:'id',match:/film\.sohu\.com\/album\//},
+                {funcName:"playVideo", node:"#le_playbox",nodeType:'id',match:/le\.com\/ptv\/vplay\//,areaClassName:'juji_grid'},
+                {funcName:"playVideo", node:"#player",nodeType:'id',match:/play\.tudou\.com\/v_show\/id_/},
+                {funcName:"playVideo", node:"#pptv_playpage_box",nodeType:'id',match:/v\.pptv\.com\/show\//},
+                {funcName:"playVideo", node:"#player",nodeType:'id',match:/vip\.1905.com\/play\//},
+                {funcName:"playVideo", node:"#vodPlayer",nodeType:'id',match:/www\.1905.com\/vod\/play\//},
+            ];
+            let jxVideoWeb = jxVideoData.filter(function(item){
+                return location.href.match(item.match);
+            })
+            var {funcName,match:nowMatch,node:nowNode,name:nowName} = jxVideoWeb[0];
+            let nowWebNode = document.querySelector(nowNode);
+            nowWebNode.innerHTML = playJxHtml;
+            let playIframe = document.querySelector('#playIframe');
+            playIframe.src= playObject+location.href;
+        }
+
 		this.runEvent = function(){	 //事件运行
 			var that = this,searchword,box_switch=-1,box_switch1=-1;
             if(!!box_switch){$(".search_interface_box"+this.elementId).hide();box_switch=1;}
@@ -292,7 +351,9 @@
 			$("body").on("click","#vip_movie_box"+this.elementId+" .vip_mod_box_action_687ii>.item_box"+this.elementId+">.interface_box"+this.elementId+">span",function(){
 				var index = parseInt($(this).attr("data-index"));
 				var playObject = originalInterfaceList[index];
-				that.showPlayerWindow(playObject);
+                if(window.location.href.indexOf("bilibili.com/bangumi/play/")!=-1)
+                    that.showPlayerWindow(playObject);
+				else DisplayPosition(playObject.url);
 			});
             $("body").on("click","#vip_movie_box"+this.elementId+" .vip_mod_box_action_687ii>.item_box"+this.elementId+">.search_interface_box"+this.elementId+">span",function(){
 			    var index = parseInt($(this).attr("data-index"));
